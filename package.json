@@ -1,7 +1,7 @@
 {
-  "name": "vue-cli",
-  "version": "2.9.6",
-  "description": "A simple CLI for scaffolding Vue.js projects.",
+  "name": "sobuild-cli",
+  "version": "0.0.1",
+  "description": "A simple CLI for update webpack5.",
   "preferGlobal": true,
   "bin": {
     "sobuild": "bin/sobuild",
@@ -9,23 +9,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vuejs/vue-cli.git"
+    "url": "git+https://github.com/liuzhaoxu1996/sobuild-cli.git"
   },
   "keywords": [
-    "vue",
+    "build",
     "cli",
-    "spa"
+    "webpack"
   ],
-  "author": "Evan You",
+  "author": "liuzhaoxu",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/vuejs/vue-cli/issues"
+    "url": "https://github.com/liuzhaoxu1996/sobuild-cli/issues"
   },
-  "homepage": "https://github.com/vuejs/vue-cli#readme",
+  "homepage": "https://github.com/liuzhaoxu1996/sobuild-cli",
   "scripts": {
-    "test": "sobuild init webpack demo",
-    "lint": "eslint test/e2e/test*.js lib bin/* --env mocha",
-    "e2e": "rimraf test/e2e/mock-template-build && mocha test/e2e/test.js --slow 1000"
+    "test": "sobuild init webpack demo"
   },
   "dependencies": {
     "async": "^2.4.0",
