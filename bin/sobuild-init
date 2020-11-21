@@ -135,14 +135,14 @@ function downloadAndGenerate(template) {
     const spinner = ora('下载模板')
     spinner.start()
     // Remove if local template exists
-    if (exists(tmp)) rm(tmp)
-    download('github:liuzhaoxu1996/sobuild-template', tmp, { clone }, err => {
-        spinner.stop()
-        // if (err) logger.fatal('Failed to download repo ' + template + ': ' + err.message.trim())
-        generate(name, tmp, to, err => {
-            if (err) logger.fatal(err)
-            console.log()
-            logger.success('Generated "%s".', name)
-        })
+    // if (exists(tmp)) rm(tmp)
+    // download('github:liuzhaoxu1996/sobuild-template', tmp, { clone }, err => {
+    spinner.stop()
+    // if (err) logger.fatal('Failed to download repo ' + template + ': ' + err.message.trim())
+    generate(name, tmp, to, err => {
+        if (err) logger.fatal(err)
+        console.log()
+        logger.success('Generated "%s".', name)
     })
+    // })
 }
