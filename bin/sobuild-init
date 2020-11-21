@@ -116,7 +116,7 @@ function run() {
         checkVersion(() => {
             if (!hasSlash) {
                 // use official templates
-                const officialTemplate = 'sobuild-templates/' + template
+                const officialTemplate = 'sobuild-webpack-template/' + template
                 downloadAndGenerate(officialTemplate)
             } else {
                 downloadAndGenerate(template)
