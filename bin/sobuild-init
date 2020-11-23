@@ -10,7 +10,7 @@ const tildify = require('tildify')
 const chalk = require('chalk')
 const inquirer = require('inquirer')
 const rm = require('rimraf').sync
-const logger = require('../lib/logger')
+const log = require('../lib/log')
 const generate = require('../lib/generate')
 const checkVersion = require('../lib/check-version')
 const localPath = require('../lib/local-path')
@@ -75,7 +75,7 @@ if (inPlace || exists(to)) {
         if (answers.ok) {
             run()
         }
-    }).catch(logger.fatal)
+    }).catch(log.fatal)
 } else {
     run()
 }
@@ -89,12 +89,12 @@ function run() {
         const templatePath = getTemplatePath(template)
         if (exists(templatePath)) {
             generate(name, templatePath, to, err => {
-                if (err) logger.fatal(err)
+                if (err) log.fatal(err)
                 console.log()
-                logger.success('已生成 "%s".', name)
+                log.success('已生成 "%s".', name)
             })
         } else {
-            logger.fatal('本地模板没有找到.', template)
+            log.fatal('本地模板没有找到.', template)
         }
     } else {
         checkVersion(() => {
@@ -121,11 +121,11 @@ function downloadAndGenerate(template) {
     if (exists(tmp)) rm(tmp)
     download('github:liuzhaoxu1996/sobuild-webpack-template', tmp, { clone }, err => {
         spinner.stop()
-        if (err) logger.fatal('下载失败 ' + template + ': ' + err.message.trim())
+        if (err) log.fatal('下载失败 ' + template + ': ' + err.message.trim())
         generate(name, tmp, to, err => {
-            if (err) logger.fatal(err)
+            if (err) log.fatal(err)
             console.log()
-            logger.success('已生成' "%s".', name)
+            log.success('已生成' "%s".', name)
         })
     })
 }
