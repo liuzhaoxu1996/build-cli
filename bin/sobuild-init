@@ -125,7 +125,7 @@ function downloadAndGenerate(template) {
         generate(name, tmp, to, err => {
             if (err) log.fatal(err)
             console.log()
-            log.success('已生成' "%s".', name)
+            log.success('已生成 "%s".', name)
         })
     })
 }
