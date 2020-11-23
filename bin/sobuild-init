@@ -20,8 +20,8 @@ const getTemplatePath = localPath.getTemplatePath
 
 program
     .usage('<template-name> [project-name]')
-    .option('-c, --clone', 'use git clone')
-    .option('--offline', 'use cached template')
+    .option('-c, --clone', '使用git clone')
+    .option('--offline', '使用本地模板')
 
 
 program.on('--help', () => {
@@ -53,7 +53,8 @@ const clone = program.clone || false
 
 const tmp = path.join(home, '.sobuild-tempaltes', template)
 if (program.offline) {
-    console.log(`> Use cached template at ${chalk.yellow(tildify(tmp))}`)
+    // Convert an absolute path to a tilde path: /Users/sindresorhus/dev → ~/dev
+    console.log(`> 使用已缓存的模板: ${chalk.yellow(tildify(tmp))}`)
     template = tmp
 }
 
