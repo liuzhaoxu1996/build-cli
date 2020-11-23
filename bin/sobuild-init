@@ -18,18 +18,11 @@ const localPath = require('../lib/local-path')
 const isLocalPath = localPath.isLocalPath
 const getTemplatePath = localPath.getTemplatePath
 
-/**
- * Usage.
- */
-
 program
     .usage('<template-name> [project-name]')
     .option('-c, --clone', 'use git clone')
     .option('--offline', 'use cached template')
 
-/**
- * Help.
- */
 
 program.on('--help', () => {
     console.log('  Examples:')
@@ -42,9 +35,6 @@ program.on('--help', () => {
     console.log()
 })
 
-/**
- * Help.
- */
 
 function help() {
     program.parse(process.argv)
@@ -52,9 +42,6 @@ function help() {
 }
 help()
 
-/**
- * Settings.
- */
 
 let template = program.args[0]
 const hasSlash = template.indexOf('/') > -1
@@ -70,9 +57,6 @@ if (program.offline) {
     template = tmp
 }
 
-/**
- * Padding.
- */
 
 console.log()
 process.on('exit', () => {
@@ -96,11 +80,10 @@ if (inPlace || exists(to)) {
 }
 
 /**
- * Check, download and generate the project.
+ * 检查, 下载并生成项目.
  */
 
 function run() {
-    // check if template is local
     if (isLocalPath(template)) {
         const templatePath = getTemplatePath(template)
         if (exists(templatePath)) {
@@ -115,7 +98,6 @@ function run() {
     } else {
         checkVersion(() => {
             if (!hasSlash) {
-                // use official templates
                 const officialTemplate = 'sobuild-webpack-template/' + template
                 downloadAndGenerate(officialTemplate)
             } else {
@@ -126,7 +108,7 @@ function run() {
 }
 
 /**
- * Download a generate from a template repo.
+ * 下载并编译模板.
  *
  * @param {String} template
  */
