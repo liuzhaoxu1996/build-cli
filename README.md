@@ -43,7 +43,8 @@ sobuild init webpack demo
 
 - templates目录: 存放ejs模板
 
- meta.js 或者 meta.json 包含以下字段:
+## meta字段
+meta.js 或者 meta.json 包含以下字段:
 
 -   `prompts`: 用于收集用户选项数据
 
