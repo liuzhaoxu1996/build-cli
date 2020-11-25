@@ -4,7 +4,7 @@
 
 sobuild-cli 旨在能够 **快速构建项目**, **规范目录结构**, **开发规范** 等。 接入者可快速开发业务, 无需考虑打包构建等头疼问题。
 
-<img src="https://p3.ssl.qhimg.com/t0132bd7c6d008a753f.png" width=300/>
+<img src="https://p3.ssl.qhimg.com/t0132bd7c6d008a753f.png" width=500/>
 
 ## 如何接入？
 
