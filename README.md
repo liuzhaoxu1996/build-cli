@@ -38,15 +38,13 @@ sobuild init webpack demo
 
 你也可以使用自己构建的模板, 参照 sobuild-webpack-template 构建自己的通用配置
 
-### 必要文件
+## 必要文件
 
 - meta.js / meta.json: 配置文件
 
 - templates目录: 存放ejs模板
 
-sobuild 使用 `ejs`模板语法, 使用[metalsmith](https://github.com/segmentio/metalsmith)读取 meta.js 或者 meta.json 配置
-
-包含以下字段:
+ meta.js 或者 meta.json 包含以下字段:
 
 -   `prompts`: 用于收集用户选项数据
 
