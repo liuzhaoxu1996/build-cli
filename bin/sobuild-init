@@ -28,10 +28,10 @@ program.on('--help', () => {
     console.log('  Examples:')
     console.log()
     console.log(chalk.gray('    # create a new project with an official template'))
-    console.log('    $ sobuild init webpack my-project')
+    console.log('    $ build init webpack my-project')
     console.log()
     console.log(chalk.gray('    # create a new project straight from a github template'))
-    console.log('    $ sobuild init username/repo my-project')
+    console.log('    $ build init username/repo my-project')
     console.log()
 })
 
@@ -51,7 +51,7 @@ const name = inPlace ? path.relative('../', process.cwd()) : rawName
 const to = path.resolve(rawName || '.')
 const clone = program.clone || false
 
-const tmp = path.join(home, '.sobuild-tempaltes', template)
+const tmp = path.join(home, '.build-tempaltes', template)
 if (program.offline) {
     // Convert an absolute path to a tilde path: /Users/sindresorhus/dev → ~/dev
     console.log(`> 使用已缓存的模板: ${chalk.yellow(tildify(tmp))}`)
@@ -69,7 +69,7 @@ if (inPlace || exists(to)) {
         type: 'confirm',
         message: inPlace
             ? '在当前文件夹生成项目?'
-            : '项目已经存在, sobuild会合并基础配置(比如webpack, package.json, lint规范等), 是否继续? 建议继续, 统一配置!',
+            : '项目已经存在, build会合并基础配置(比如webpack, package.json, lint规范等), 是否继续? 建议继续, 统一配置!',
         name: 'ok'
     }]).then(answers => {
         if (answers.ok) {
@@ -99,7 +99,7 @@ function run() {
     } else {
         checkVersion(() => {
             if (!hasSlash) {
-                const officialTemplate = 'sobuild-webpack-template/' + template
+                const officialTemplate = 'build-webpack-template/' + template
                 downloadAndGenerate(officialTemplate)
             } else {
                 downloadAndGenerate(template)
@@ -119,7 +119,7 @@ function downloadAndGenerate(template) {
     spinner.start()
     // Remove if local template exists
     if (exists(tmp)) rm(tmp)
-    download('github:liuzhaoxu1996/sobuild-webpack-template', tmp, { clone }, err => {
+    download('github:liuzhaoxu1996/build-webpack-template', tmp, { clone }, err => {
         spinner.stop()
         if (err) log.fatal('下载失败 ' + template + ': ' + err.message.trim())
         generate(name, tmp, to, err => {
