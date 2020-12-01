@@ -1,4 +1,3 @@
-import async from "async";
 export default function ask(prompts: {
     [x: string]: {
         when: string;
@@ -16,4 +15,4 @@ export default function ask(prompts: {
     };
 }, data: {
     [x: string]: any;
-}, done: async.ErrorCallback<Error>): void;
+}, done: any): void;

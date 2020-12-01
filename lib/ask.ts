@@ -21,7 +21,7 @@ export default function ask(
     };
   },
   data: { [x: string]: any },
-  done: async.ErrorCallback<Error>
+  done: any
 ) {
   async.eachSeries(
     Object.keys(prompts),
@@ -53,7 +53,7 @@ function prompt(
     choices: any;
     validate: any;
   },
-  done: async.ErrorCallback<Error>
+  done: any
 ) {
   // 测试预留钩子,可以过滤问答环节
   if (prompt.when && !evaluate(prompt.when, data)) {
