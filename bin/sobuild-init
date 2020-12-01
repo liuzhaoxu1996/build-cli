@@ -10,13 +10,12 @@ const tildify = require('tildify')
 const chalk = require('chalk')
 const inquirer = require('inquirer')
 const rm = require('rimraf').sync
-const log = require('../lib/log')
-const generate = require('../lib/generate')
-const checkVersion = require('../lib/check-version')
-const localPath = require('../lib/local-path')
-
-const isLocalPath = localPath.isLocalPath
-const getTemplatePath = localPath.getTemplatePath
+const log = require('../build/lib/log')
+const generate = require('../build/lib/generate').default
+const checkVersion = require('../build/lib/check-version')
+const localPath = require('../build/lib/local-path').default
+const { isLocalPath } = localPath
+const { getTemplatePath } = localPath
 
 program
     .usage('<template-name> [project-name]')
@@ -125,7 +124,7 @@ function downloadAndGenerate(template) {
         generate(name, tmp, to, err => {
             if (err) log.fatal(err)
             console.log()
-            log.success('已生成 "%s".', name)
+            log.success('生成 "%s".', name)
         })
     })
 }
