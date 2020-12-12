@@ -45,9 +45,9 @@ help()
 let template = program.args[0]
 const hasSlash = template.indexOf('/') > -1
 const rawName = program.args[1]
-const inPlace = !rawName || rawName === '.'
-const name = inPlace ? path.relative('../', process.cwd()) : rawName
-const to = path.resolve(rawName || '.')
+const inCurrent = !rawName || rawName === '.'
+const name = inCurrent ? path.relative('../', process.cwd()) : rawName
+const targetDir = path.resolve(rawName || '.')
 const clone = program.clone || false
 
 const tmp = path.join(home, '.build-tempaltes', template)
@@ -63,12 +63,12 @@ process.on('exit', () => {
     console.log()
 })
 
-if (inPlace || exists(to)) {
+if (inCurrent || exists(targetDir)) {
     inquirer.prompt([{
         type: 'confirm',
-        message: inPlace
+        message: inCurrent
             ? '在当前文件夹生成项目?'
-            : '项目已经存在, build会合并基础配置(比如webpack, package.json, lint规范等), 是否继续? 建议继续, 统一配置!',
+            : '项目已经存在, so-build-cli会合并基础配置(比如webpack, package.json, lint规范等), 是否继续? 建议继续, 统一配置!',
         name: 'ok'
     }]).then(answers => {
         if (answers.ok) {
@@ -87,7 +87,7 @@ function run() {
     if (isLocalPath(template)) {
         const templatePath = getTemplatePath(template)
         if (exists(templatePath)) {
-            generate(name, templatePath, to, err => {
+            generate(name, templatePath, targetDir, err => {
                 if (err) log.fatal(err)
                 console.log()
                 log.success('已生成 "%s".', name)
@@ -119,9 +119,9 @@ function downloadAndGenerate(template) {
     // Remove if local template exists
     if (exists(tmp)) rm(tmp)
     download('github:liuzhaoxu1996/build-webpack-template', tmp, { clone }, err => {
-        spinner.stop()
+        spinner.stargetDirp()
         if (err) log.fatal('下载失败 ' + template + ': ' + err.message.trim())
-        generate(name, tmp, to, err => {
+        generate(name, tmp, targetDir, err => {
             if (err) log.fatal(err)
             console.log()
             log.success('生成 "%s".', name)

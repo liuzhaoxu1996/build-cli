@@ -29,7 +29,7 @@ export default function generate(
   const metalsmith = Metalsmith(path.join(src, "templates"));
   const data = Object.assign(metalsmith.metadata(), {
     destDirName: name,
-    inPlace: dest === process.cwd(),
+    inCurrent: dest === process.cwd(),
     noEscape: true,
   });
   // 执行中间件
@@ -138,7 +138,7 @@ function renderTemplateFiles(skipInterpolation: any, dest: any) {
 
 function logMessage(
   message: any,
-  data: object & { destDirName: any; inPlace: boolean; noEscape: boolean }
+  data: object & { destDirName: any; inCurrent: boolean; noEscape: boolean }
 ) {
   if (!message) return;
   render(message, data, (err: { message: string }, res: string) => {
@@ -147,10 +147,10 @@ function logMessage(
     } else {
       console.log(
         "\n" +
-          res
-            .split(/\r?\n/g)
-            .map((line) => "   " + line)
-            .join("\n")
+        res
+          .split(/\r?\n/g)
+          .map((line) => "   " + line)
+          .join("\n")
       );
     }
   });
