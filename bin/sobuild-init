@@ -52,7 +52,7 @@ const clone = program.clone || false
 
 const tmp = path.join(home, '.build-tempaltes', template)
 if (program.offline) {
-    // Convert an absolute path to a tilde path: /Users/sindresorhus/dev → ~/dev
+    // /Users/sindresorhus/dev → ~/dev
     console.log(`> 使用已缓存的模板: ${chalk.yellow(tildify(tmp))}`)
     template = tmp
 }
