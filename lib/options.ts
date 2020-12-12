@@ -4,7 +4,7 @@ import { existsSync as exists } from "fs";
 import getGitUser from "./git-user";
 import setValidateName from './validate-name';
 /**
- * 获取metadata数据.
+ * 获取 metadata 数据.
  * @param {String} dir
  * @return {Object}
  */
