@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.success = exports.fatal = exports.log = void 0;
 var chalk_1 = __importDefault(require("chalk"));
 var util_1 = require("util");
-var prefix = "   build-cli";
+var prefix = "   so-build-cli";
 var sep = chalk_1.default.gray("·");
 var log = function () {
     var args = [];

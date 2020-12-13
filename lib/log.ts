@@ -3,7 +3,7 @@ import { format } from "util";
 /**
  * Prefix.
  */
-const prefix = "   build-cli";
+const prefix = "   so-build-cli";
 const sep = chalk.gray("·");
 
 /**
